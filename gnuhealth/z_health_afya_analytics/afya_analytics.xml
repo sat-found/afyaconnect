@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="analytics_outbox_view_form">
+            <field name="model">gnuhealth.afya.analytics_outbox</field>
+            <field name="type">form</field>
+            <field name="name">analytics_outbox_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="analytics_outbox_view_list">
+            <field name="model">gnuhealth.afya.analytics_outbox</field>
+            <field name="type">tree</field>
+            <field name="name">analytics_outbox_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_analytics_outbox">
+            <field name="name">Analytics Outbox</field>
+            <field name="res_model">gnuhealth.afya.analytics_outbox</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_analytics_outbox_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="analytics_outbox_view_list"/>
+            <field name="act_window" ref="act_analytics_outbox"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_analytics_outbox_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="analytics_outbox_view_form"/>
+            <field name="act_window" ref="act_analytics_outbox"/>
+        </record>
+
+        <menuitem parent="z_health_afya_core.menu_afya_root"
+            action="act_analytics_outbox" sequence="60" id="menu_analytics"/>
+    </data>
+</tryton>

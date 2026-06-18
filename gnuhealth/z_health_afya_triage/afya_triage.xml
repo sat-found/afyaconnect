@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="triage_session_view_form">
+            <field name="model">gnuhealth.afya.triage_session</field>
+            <field name="type">form</field>
+            <field name="name">triage_session_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="triage_session_view_list">
+            <field name="model">gnuhealth.afya.triage_session</field>
+            <field name="type">tree</field>
+            <field name="name">triage_session_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_triage_session">
+            <field name="name">Triage Sessions</field>
+            <field name="res_model">gnuhealth.afya.triage_session</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_triage_session_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="triage_session_view_list"/>
+            <field name="act_window" ref="act_triage_session"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_triage_session_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="triage_session_view_form"/>
+            <field name="act_window" ref="act_triage_session"/>
+        </record>
+
+        <record model="ir.ui.view" id="emergency_keyword_view_form">
+            <field name="model">gnuhealth.afya.emergency_keyword</field>
+            <field name="type">form</field>
+            <field name="name">emergency_keyword_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="emergency_keyword_view_list">
+            <field name="model">gnuhealth.afya.emergency_keyword</field>
+            <field name="type">tree</field>
+            <field name="name">emergency_keyword_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_emergency_keyword">
+            <field name="name">Emergency Keywords</field>
+            <field name="res_model">gnuhealth.afya.emergency_keyword</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_emergency_keyword_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="emergency_keyword_view_list"/>
+            <field name="act_window" ref="act_emergency_keyword"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_emergency_keyword_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="emergency_keyword_view_form"/>
+            <field name="act_window" ref="act_emergency_keyword"/>
+        </record>
+
+        <menuitem parent="z_health_afya_core.menu_afya_root"
+            action="act_triage_session" sequence="30" id="menu_triage_session"/>
+        <menuitem parent="z_health_afya_core.menu_afya_root"
+            action="act_emergency_keyword" sequence="35" id="menu_emergency_keyword"/>
+    </data>
+</tryton>

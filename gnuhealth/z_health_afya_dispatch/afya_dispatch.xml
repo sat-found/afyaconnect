@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="dispatch_stub_view_form">
+            <field name="model">gnuhealth.afya.dispatch_stub</field>
+            <field name="type">form</field>
+            <field name="name">dispatch_stub_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dispatch_stub_view_list">
+            <field name="model">gnuhealth.afya.dispatch_stub</field>
+            <field name="type">tree</field>
+            <field name="name">dispatch_stub_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_dispatch_stub">
+            <field name="name">Dispatch</field>
+            <field name="res_model">gnuhealth.afya.dispatch_stub</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dispatch_stub_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="dispatch_stub_view_list"/>
+            <field name="act_window" ref="act_dispatch_stub"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dispatch_stub_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="dispatch_stub_view_form"/>
+            <field name="act_window" ref="act_dispatch_stub"/>
+        </record>
+
+        <menuitem parent="z_health_afya_core.menu_afya_root"
+            action="act_dispatch_stub" sequence="40" id="menu_dispatch"/>
+    </data>
+</tryton>

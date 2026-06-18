@@ -75,11 +75,23 @@ if ! psql -h $DB_HOSTNAME -U $DB_USERNAME -d $DB_NAME -c "\dt" | grep res_user; 
   /scripts/init $ADMIN_MAIL $ADMIN_PW $DB_NAME
 fi
 
+NEEDS_MODULE_UPDATE=false
 if ! psql -h $DB_HOSTNAME -U $DB_USERNAME -d $DB_NAME -tAc \
     "SELECT 1 FROM ir_module WHERE name='health' AND state='activated'" | grep -q 1; then
-  echo "Activating GNU Health modules on ${DB_NAME}"
+  NEEDS_MODULE_UPDATE=true
+fi
+if ! psql -h $DB_HOSTNAME -U $DB_USERNAME -d $DB_NAME -tAc \
+    "SELECT 1 FROM ir_module WHERE name='z_health_afya_core' AND state='activated'" | grep -q 1; then
+  NEEDS_MODULE_UPDATE=true
+fi
+
+if $NEEDS_MODULE_UPDATE; then
+  echo "Activating GNU Health and AfyaConnect modules on ${DB_NAME}"
   trytond-admin -c /opt/gnuhealth/etc/trytond.conf -d "${DB_NAME}" \
-    --activate-dependencies -u health health_lab
+    --activate-dependencies -u health health_lab health_ems health_icd10 \
+    health_federation health_crypto health_reporting \
+    z_health_afya_core z_health_afya_access z_health_afya_triage \
+    z_health_afya_dispatch z_health_afya_diaspora z_health_afya_analytics
 fi
 
 /usr/local/bin/uwsgi --ini /opt/gnuhealth/etc/trytond.ini

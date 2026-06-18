@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="access_session_view_form">
+            <field name="model">gnuhealth.afya.access_session</field>
+            <field name="type">form</field>
+            <field name="name">access_session_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="access_session_view_list">
+            <field name="model">gnuhealth.afya.access_session</field>
+            <field name="type">tree</field>
+            <field name="name">access_session_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_access_session">
+            <field name="name">Access Sessions</field>
+            <field name="res_model">gnuhealth.afya.access_session</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_access_session_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="access_session_view_list"/>
+            <field name="act_window" ref="act_access_session"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_access_session_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="access_session_view_form"/>
+            <field name="act_window" ref="act_access_session"/>
+        </record>
+
+        <menuitem parent="z_health_afya_core.menu_afya_root"
+            action="act_access_session" sequence="20" id="menu_access_session"/>
+    </data>
+</tryton>

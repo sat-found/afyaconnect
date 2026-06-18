@@ -14,7 +14,14 @@ RUN apt-get install -y expect graphviz libreoffice-writer-nogui libreoffice-calc
   pip3 install uwsgi && \
   pip3 install gnuhealth-all-modules
 
-COPY mosquito_registration /usr/local/lib/python3.11/site-packages/trytond/modules/mosquito_registration 
+COPY mosquito_registration /usr/local/lib/python3.11/site-packages/trytond/modules/mosquito_registration
+COPY z_health_afya_core /usr/local/lib/python3.11/site-packages/trytond/modules/z_health_afya_core
+COPY z_health_afya_access /usr/local/lib/python3.11/site-packages/trytond/modules/z_health_afya_access
+COPY z_health_afya_triage /usr/local/lib/python3.11/site-packages/trytond/modules/z_health_afya_triage
+COPY z_health_afya_dispatch /usr/local/lib/python3.11/site-packages/trytond/modules/z_health_afya_dispatch
+COPY z_health_afya_diaspora /usr/local/lib/python3.11/site-packages/trytond/modules/z_health_afya_diaspora
+COPY z_health_afya_analytics /usr/local/lib/python3.11/site-packages/trytond/modules/z_health_afya_analytics
+COPY seed /opt/gnuhealth/seed
 
 RUN mkdir -p /opt/gnuhealth/etc /opt/gnuhealth/var/log /opt/gnuhealth/var/lib && \
   cp `pip3 show uwsgi | grep "Location" | cut -b 10-`/gnuhealth-all-modules/etc/trytond.conf /opt/gnuhealth/etc/ && \
