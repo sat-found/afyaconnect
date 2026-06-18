@@ -70,7 +70,7 @@ class ConsentRecord(ModelSQL, ModelView):
 class PostHocConsentTask(ModelSQL, ModelView):
     "Post-Hoc Consent Task"
     __name__ = 'gnuhealth.afya.posthoc_consent_task'
-    _rec_name = 'id'
+    _rec_name = 'triage_session_ref'
 
     party = fields.Many2One('party.party', 'Party')
     triage_session_ref = fields.Char(

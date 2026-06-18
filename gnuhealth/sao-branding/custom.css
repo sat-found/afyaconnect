@@ -1,0 +1,283 @@
+/* AfyaConnect — modern healthcare UI theme for GNU Health / Tryton SAO */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html[theme="afyaconnect"] {
+  --afya-teal: #0d9488;
+  --afya-teal-dark: #0f766e;
+  --afya-teal-light: #14b8a6;
+  --afya-navy: #0f172a;
+  --afya-slate: #334155;
+  --afya-muted: #64748b;
+  --afya-surface: #f8fafc;
+  --afya-card: #ffffff;
+  --afya-border: #e2e8f0;
+  --afya-accent: #f59e0b;
+  --afya-danger: #ef4444;
+  --afya-radius: 12px;
+  --afya-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --afya-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --body-bg: var(--afya-surface);
+  --text: var(--afya-navy);
+  --link: var(--afya-teal);
+  --link-hover: var(--afya-teal-dark);
+  --navbar: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+  --navbar-link: rgba(255, 255, 255, 0.92);
+  --navbar-link-hover: #ffffff;
+  --border: var(--afya-border);
+  --panel: var(--afya-card);
+  --selected: rgba(13, 148, 136, 0.12);
+  --selected-text: var(--afya-teal-dark);
+  --inputs: var(--afya-card);
+  --inputs-border: var(--afya-border);
+}
+
+html[theme="afyaconnect"],
+html[theme="afyaconnect"] body {
+  font-family: var(--afya-font);
+  background: var(--afya-surface);
+  color: var(--afya-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[theme="afyaconnect"] .navbar-inverse {
+  background: var(--navbar) !important;
+  border: none;
+  box-shadow: 0 2px 16px rgba(15, 118, 110, 0.25);
+  min-height: 56px;
+}
+
+html[theme="afyaconnect"] .navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+html[theme="afyaconnect"] .navbar-brand #title::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: url('images/afyaconnect-icon.svg') center / contain no-repeat;
+}
+
+html[theme="afyaconnect"] #menu {
+  background: var(--afya-card);
+  border-right: 1px solid var(--afya-border);
+  box-shadow: 2px 0 12px rgba(15, 23, 42, 0.04);
+}
+
+html[theme="afyaconnect"] #menu .panel {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+html[theme="afyaconnect"] #menu .panel-heading {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--afya-muted);
+  padding: 1rem 1rem 0.5rem;
+}
+
+html[theme="afyaconnect"] #menu a {
+  border-radius: 8px;
+  margin: 2px 8px;
+  padding: 8px 12px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+html[theme="afyaconnect"] #menu a:hover,
+html[theme="afyaconnect"] #menu a:focus {
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--afya-teal-dark);
+}
+
+html[theme="afyaconnect"] #menu .active > a,
+html[theme="afyaconnect"] #menu .active > a:hover {
+  background: rgba(13, 148, 136, 0.14);
+  color: var(--afya-teal-dark);
+  font-weight: 600;
+}
+
+html[theme="afyaconnect"] .main-offcanvas {
+  background: var(--afya-surface);
+}
+
+html[theme="afyaconnect"] .panel {
+  border-radius: var(--afya-radius);
+  border: 1px solid var(--afya-border);
+  box-shadow: var(--afya-shadow);
+  overflow: hidden;
+}
+
+html[theme="afyaconnect"] .panel-heading {
+  background: var(--afya-card);
+  border-bottom: 1px solid var(--afya-border);
+  font-weight: 600;
+}
+
+html[theme="afyaconnect"] .btn-primary {
+  background: var(--afya-teal);
+  border-color: var(--afya-teal);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+html[theme="afyaconnect"] .btn-primary:hover,
+html[theme="afyaconnect"] .btn-primary:focus {
+  background: var(--afya-teal-dark);
+  border-color: var(--afya-teal-dark);
+}
+
+html[theme="afyaconnect"] .btn-default {
+  border-radius: 8px;
+  border-color: var(--afya-border);
+}
+
+html[theme="afyaconnect"] .form-control {
+  border-radius: 8px;
+  border-color: var(--afya-border);
+  box-shadow: none;
+}
+
+html[theme="afyaconnect"] .form-control:focus {
+  border-color: var(--afya-teal-light);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+html[theme="afyaconnect"] .table > thead > tr > th {
+  background: var(--afya-surface);
+  border-bottom: 2px solid var(--afya-border);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--afya-muted);
+}
+
+html[theme="afyaconnect"] .table-hover > tbody > tr:hover {
+  background: rgba(13, 148, 136, 0.05);
+}
+
+html[theme="afyaconnect"] .nav-pills > li.active > a,
+html[theme="afyaconnect"] .nav-pills > li.active > a:hover {
+  background: var(--afya-teal);
+  border-radius: 8px;
+}
+
+/* Login modal */
+.afya-login-modal .modal-content {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
+}
+
+.afya-login-modal .modal-header {
+  display: none;
+}
+
+.afya-login-modal .modal-body {
+  padding: 0;
+}
+
+.afya-login-hero {
+  background: linear-gradient(145deg, #0f766e 0%, #0d9488 45%, #14b8a6 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 2rem 1.5rem;
+}
+
+.afya-login-logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.afya-login-logo svg {
+  width: 40px;
+  height: 40px;
+}
+
+.afya-login-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.afya-login-tagline {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.afya-login-form {
+  padding: 1.5rem 2rem 0.5rem;
+  background: #fff;
+}
+
+.afya-login-modal .modal-footer {
+  background: #fff;
+  border-top: 1px solid var(--afya-border);
+  padding: 1rem 2rem 1.5rem;
+}
+
+.afya-login-modal .btn-primary {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 1rem;
+}
+
+.afya-login-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--afya-muted);
+  padding: 0 2rem 1.25rem;
+  background: #fff;
+}
+
+/* Hide empty shell until logged in */
+html[theme="afyaconnect"] .body:not(.afya-app-ready) #menu,
+html[theme="afyaconnect"] .body:not(.afya-app-ready) #tabs {
+  visibility: hidden;
+}
+
+html[theme="afyaconnect"] .afya-login-form .control-label {
+  color: var(--afya-slate);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+html[theme="afyaconnect"] .afya-login-form .has-error .control-label {
+  color: var(--afya-danger);
+}
+
+html[theme="afyaconnect"] .modal-backdrop.in {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+/* AfyaConnect menu highlight */
+html[theme="afyaconnect"] #menu a[title*="AfyaConnect"],
+html[theme="afyaconnect"] #menu a:contains("AfyaConnect") {
+  font-weight: 600;
+}

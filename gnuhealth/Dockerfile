@@ -50,4 +50,7 @@ COPY ./modify_trytondconf.sh /tmp/modify_trytondconf.sh
 RUN chmod +x /tmp/modify_trytondconf.sh
 RUN /tmp/modify_trytondconf.sh
 
+COPY sao-branding /tmp/sao-branding
+RUN chmod +x /tmp/sao-branding/apply-branding.sh && /tmp/sao-branding/apply-branding.sh /home/node/sao
+
 ENTRYPOINT ["/scripts/init_and_run.sh"]

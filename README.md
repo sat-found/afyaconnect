@@ -6,6 +6,18 @@
 
 Maintained by [sat-found](https://github.com/sat-found/).
 
+## Screenshots
+
+| Login | Dashboard |
+|-------|-----------|
+| ![AfyaConnect login](docs/screenshots/01-login.png) | ![AfyaConnect dashboard with AfyaConnect menu](docs/screenshots/02-dashboard.png) |
+
+| Triage Sessions | Configuration |
+|-----------------|---------------|
+| ![Triage sessions module](docs/screenshots/03-triage-sessions.png) | ![AfyaConnect configuration](docs/screenshots/04-afyaconnect-config.png) |
+
+The web client uses a custom **AfyaConnect theme** (teal palette, Inter typography, branded login) layered on Tryton SAO via `gnuhealth/sao-branding/`.
+
 ---
 
 ## What is in this repository?
@@ -13,7 +25,7 @@ Maintained by [sat-found](https://github.com/sat-found/).
 | Layer | Status | Location |
 |-------|--------|----------|
 | GNU Health 5.x (Tryton 7.0) | **Running locally** | `gnuhealth/` Docker image |
-| AfyaConnect Tryton modules (`z_health_afya_*`) | **Phase 0 scaffold** | `gnuhealth/z_health_afya_*/` |
+| AfyaConnect Tryton modules (`z_health_afya_*`) | **Phase 1 core + security** | `gnuhealth/z_health_afya_*/` |
 | Mosquito Registration (vector surveillance) | Included | `gnuhealth/mosquito_registration/` |
 | Gombe seed data (facilities, patients, workers, keywords) | **Runnable** | `gnuhealth/seed/seed_gombe.py` |
 | SDD specs, constitution, model inventory | **Committed** | `specs/` |
@@ -29,7 +41,7 @@ Future Cloud Run services and GCP deployment are documented in [docs/afyaconnect
 ```mermaid
 flowchart TB
     subgraph local [Local Docker - this repo]
-        Browser["Browser :8090"]
+        Browser["Browser :8091"]
         Nginx["Nginx"]
         GH["GNU Health + AfyaConnect modules"]
         PG["PostgreSQL 16"]
@@ -161,6 +173,7 @@ afyaconnect/
 ├── gnuhealth/
 │   ├── Dockerfile              # GNU Health 5.x + AfyaConnect modules
 │   ├── init_and_run.sh         # DB init, module activation, uWSGI
+│   ├── sao-branding/           # AfyaConnect web UI theme (custom.css/js)
 │   ├── env.template            # Environment variable reference
 │   ├── mosquito_registration/  # Vector surveillance module
 │   ├── z_health_afya_core/     # AfyaConnect core module
@@ -202,6 +215,7 @@ afyaconnect/
 | `./scripts/status.sh` | Show container status |
 | `./scripts/logs.sh [service]` | Follow logs (`app`, `db`, or `web`) |
 | `./scripts/seed-gombe.sh` | Load Gombe synthetic demo data |
+| `node scripts/screenshot-ui.mjs` | Capture README screenshots (requires Playwright) |
 
 ---
 
@@ -285,8 +299,9 @@ Key documents:
 | Problem | Solution |
 |---------|----------|
 | Docker is not running | Start Docker Desktop and wait until ready |
-| Port 8090 in use | Run `lsof -i :8090` and change port in `docker-compose.yml` |
-| FORBIDDEN / Bad Gateway on login | Use `http://localhost:8090`, hard-refresh, database `health` |
+| Port 8091 in use | Run `lsof -i :8091` and change port in `docker-compose.yml` |
+| Login fails / Application Error | Use database `health`, user `admin`, password `gnusolidario`; rebuild if password was never set |
+| FORBIDDEN / Bad Gateway on login | Use `http://localhost:8091`, hard-refresh, database `health` |
 | 502 Bad Gateway after start | App still initializing — wait 5–15 min, check `./scripts/logs.sh app` |
 | Module activation failed | Check app logs for traceback; rebuild with `docker compose up -d --build` |
 | Seed script federation error | Ensure `fsync=False` and `fed_country='NGA'` (already set in seed script) |
@@ -312,8 +327,8 @@ The underlying GNU Health stack (PostgreSQL, Tryton, SAO web client, Nginx) is u
 
 | Phase | Focus | Status |
 |-------|-------|--------|
-| 0 | Local foundation, module scaffolds, G0 inventory | **Current** |
-| 1 | Core module (consent, security PoC), FHIR adapter | After G0 approval |
+| 0 | Local foundation, module scaffolds, G0 inventory | **Done** |
+| 1 | Core module (consent, security PoC), triage workflow | **Current** (`feature/phase-1-core-security`) |
 | 2 | Access + triage data layer, Access Gateway | Planned |
 | 3 | AI triage end-to-end (Vertex AI + WHO RAG) | Planned |
 | 4 | Dispatch + analytics pipeline | Planned |

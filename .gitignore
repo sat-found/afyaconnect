@@ -3,3 +3,5 @@ app-log/
 web-log/
 .env
 .env.local
+node_modules/
+package-lock.json

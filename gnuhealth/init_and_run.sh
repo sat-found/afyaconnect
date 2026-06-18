@@ -75,6 +75,13 @@ if ! psql -h $DB_HOSTNAME -U $DB_USERNAME -d $DB_NAME -c "\dt" | grep res_user; 
   /scripts/init $ADMIN_MAIL $ADMIN_PW $DB_NAME
 fi
 
+if [[ -z "$(psql -h $DB_HOSTNAME -U $DB_USERNAME -d $DB_NAME -tAc \
+    "SELECT password FROM res_user WHERE login='admin'")" ]]; then
+  echo "Setting admin password on ${DB_NAME}"
+  printf '%s\n%s\n' "$ADMIN_PW" "$ADMIN_PW" | \
+    trytond-admin -c /opt/gnuhealth/etc/trytond.conf -d "${DB_NAME}" -p
+fi
+
 NEEDS_MODULE_UPDATE=false
 if ! psql -h $DB_HOSTNAME -U $DB_USERNAME -d $DB_NAME -tAc \
     "SELECT 1 FROM ir_module WHERE name='health' AND state='activated'" | grep -q 1; then
