@@ -7,13 +7,11 @@
             <field name="type">form</field>
             <field name="name">afya_config_form</field>
         </record>
-
         <record model="ir.ui.view" id="afya_config_view_list">
             <field name="model">gnuhealth.afya.config</field>
             <field name="type">tree</field>
             <field name="name">afya_config_list</field>
         </record>
-
         <record model="ir.action.act_window" id="act_afya_config">
             <field name="name">AfyaConnect Configuration</field>
             <field name="res_model">gnuhealth.afya.config</field>
@@ -29,8 +27,65 @@
             <field name="act_window" ref="act_afya_config"/>
         </record>
 
+        <record model="ir.ui.view" id="consent_record_view_form">
+            <field name="model">gnuhealth.afya.consent_record</field>
+            <field name="type">form</field>
+            <field name="name">consent_record_form</field>
+        </record>
+        <record model="ir.ui.view" id="consent_record_view_list">
+            <field name="model">gnuhealth.afya.consent_record</field>
+            <field name="type">tree</field>
+            <field name="name">consent_record_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_consent_record">
+            <field name="name">Consent Records</field>
+            <field name="res_model">gnuhealth.afya.consent_record</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consent_record_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="consent_record_view_list"/>
+            <field name="act_window" ref="act_consent_record"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consent_record_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="consent_record_view_form"/>
+            <field name="act_window" ref="act_consent_record"/>
+        </record>
+
+        <record model="ir.ui.view" id="posthoc_consent_view_form">
+            <field name="model">gnuhealth.afya.posthoc_consent_task</field>
+            <field name="type">form</field>
+            <field name="name">posthoc_consent_form</field>
+        </record>
+        <record model="ir.ui.view" id="posthoc_consent_view_list">
+            <field name="model">gnuhealth.afya.posthoc_consent_task</field>
+            <field name="type">tree</field>
+            <field name="name">posthoc_consent_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_posthoc_consent">
+            <field name="name">Post-Hoc Consent Tasks</field>
+            <field name="res_model">gnuhealth.afya.posthoc_consent_task</field>
+            <field name="domain"
+                eval="[('resolved', '=', False)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_posthoc_consent_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="posthoc_consent_view_list"/>
+            <field name="act_window" ref="act_posthoc_consent"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_posthoc_consent_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="posthoc_consent_view_form"/>
+            <field name="act_window" ref="act_posthoc_consent"/>
+        </record>
+
         <menuitem name="AfyaConnect" sequence="90" id="menu_afya_root"/>
         <menuitem parent="menu_afya_root" action="act_afya_config"
             sequence="10" id="menu_afya_config"/>
+        <menuitem parent="menu_afya_root" action="act_consent_record"
+            sequence="15" id="menu_consent_record"/>
+        <menuitem parent="menu_afya_root" action="act_posthoc_consent"
+            sequence="18" id="menu_posthoc_consent"/>
     </data>
 </tryton>

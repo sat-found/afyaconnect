@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+
+        <record model="res.group" id="group_afya_clinical_reviewer">
+            <field name="name">Afya Clinical Reviewer</field>
+        </record>
+        <record model="res.group" id="group_afya_dispatcher">
+            <field name="name">Afya Dispatcher</field>
+        </record>
+        <record model="res.group" id="group_afya_diaspora_coordinator">
+            <field name="name">Afya Diaspora Coordinator</field>
+        </record>
+        <record model="res.group" id="group_afya_dashboard_viewer">
+            <field name="name">Afya Dashboard Viewer</field>
+        </record>
+        <record model="res.group" id="group_afya_admin">
+            <field name="name">Afya Administrator</field>
+        </record>
+
+        <record model="res.user-res.group" id="user_admin_group_afya_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_afya_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_afya_clinical_reviewer">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_afya_clinical_reviewer"/>
+        </record>
+
+        <record model="ir.model.access" id="access_afya_config_admin">
+            <field name="model" search="[('model', '=', 'gnuhealth.afya.config')]"/>
+            <field name="group" ref="group_afya_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_consent_record_admin">
+            <field name="model" search="[('model', '=', 'gnuhealth.afya.consent_record')]"/>
+            <field name="group" ref="group_afya_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_consent_record_reviewer">
+            <field name="model" search="[('model', '=', 'gnuhealth.afya.consent_record')]"/>
+            <field name="group" ref="group_afya_clinical_reviewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_posthoc_consent_admin">
+            <field name="model" search="[('model', '=', 'gnuhealth.afya.posthoc_consent_task')]"/>
+            <field name="group" ref="group_afya_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_posthoc_consent_reviewer">
+            <field name="model" search="[('model', '=', 'gnuhealth.afya.posthoc_consent_task')]"/>
+            <field name="group" ref="group_afya_clinical_reviewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_external_ref_admin">
+            <field name="model" search="[('model', '=', 'gnuhealth.afya.external_ref')]"/>
+            <field name="group" ref="group_afya_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

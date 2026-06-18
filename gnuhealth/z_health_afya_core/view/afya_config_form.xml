@@ -2,4 +2,6 @@
 
 <form>
     <field name="name"/>
+    <field name="symptoms_raw_ttl_days"/>
+    <field name="k_anonymity_threshold"/>
 </form>

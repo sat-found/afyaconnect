@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<form>
+    <label name="reviewer_decision"/>
+    <field name="reviewer_decision"/>
+    <label name="reviewer_notes"/>
+    <field name="reviewer_notes"/>
+</form>

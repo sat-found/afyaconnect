@@ -29,6 +29,17 @@
             <field name="act_window" ref="act_triage_session"/>
         </record>
 
+        <record model="ir.ui.view" id="review_triage_start_view_form">
+            <field name="model">gnuhealth.afya.review_triage.start</field>
+            <field name="type">form</field>
+            <field name="name">review_triage_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_review_triage">
+            <field name="name">Review Triage</field>
+            <field name="wiz_name">gnuhealth.afya.review_triage</field>
+        </record>
+
         <record model="ir.ui.view" id="emergency_keyword_view_form">
             <field name="model">gnuhealth.afya.emergency_keyword</field>
             <field name="type">form</field>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<form>
+    <field name="consent_status"/>
+    <field name="consent_actor"/>
+    <field name="consent_scope"/>
+    <field name="notes_category"/>
+    <field name="party"/>
+</form>

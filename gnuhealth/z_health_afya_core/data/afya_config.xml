@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="gnuhealth.afya.config" id="afya_config_default">
+            <field name="name">AfyaConnect Default</field>
+            <field name="symptoms_raw_ttl_days" eval="30"/>
+            <field name="k_anonymity_threshold" eval="10"/>
+        </record>
+    </data>
+</tryton>

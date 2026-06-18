@@ -103,7 +103,9 @@ Wait until you see `[uWSGI]` startup lines and no traceback errors.
 
 ### 4. Open the web UI
 
-**http://localhost:8090**
+**http://localhost:8091**
+
+Port 8091 avoids conflict if the gnu-heath stack is already running on 8090.
 
 | Field | Value |
 |-------|-------|
