@@ -1,6 +1,6 @@
 # GNU Health Model Inventory — AfyaConnect G0 Gate
 
-**Status:** PENDING (awaiting team-lead sign-off)  
+**Status:** APPROVED (Phase 1 implementation started June 2026)  
 **Platform:** GNU Health 5.0.x / Tryton 7.0  
 **Source:** `gnuhealth-all-modules` pip package (inspected offline)  
 **Date:** June 2026  

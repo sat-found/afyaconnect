@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.cron" id="cron_purge_symptoms_raw">
+            <field name="method">gnuhealth.afya.triage_session|purge_expired_symptoms_raw</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+    </data>
+</tryton>

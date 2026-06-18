@@ -8,4 +8,7 @@ from . import afya_core
 def register():
     Pool.register(
         afya_core.AfyaConfig,
+        afya_core.ConsentRecord,
+        afya_core.PostHocConsentTask,
+        afya_core.ExternalRef,
         module='z_health_afya_core', type_='model')

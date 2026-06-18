@@ -2,4 +2,8 @@
 
 <tree>
     <field name="session_id"/>
+    <field name="state"/>
+    <field name="triage_level"/>
+    <field name="human_review_required"/>
+    <field name="session_start_time"/>
 </tree>

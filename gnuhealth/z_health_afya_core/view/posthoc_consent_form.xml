@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<form>
+    <field name="triage_session_ref"/>
+    <field name="party"/>
+    <field name="resolved"/>
+    <field name="resolution_consent"/>
+</form>

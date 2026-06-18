@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<tree>
+    <field name="triage_session_ref"/>
+    <field name="party"/>
+    <field name="resolved"/>
+</tree>

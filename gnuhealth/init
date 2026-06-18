@@ -11,7 +11,7 @@ set ADMIN_PW [lindex $argv 1]
 set DB_NAME [lindex $argv 2]
 
 set timeout -1
-spawn trytond-admin -c /opt/gnuhealth/etc/trytond.conf -d "$DB_NAME" --email "$ADMIN_MAIL" --all --password
+spawn trytond-admin -c /opt/gnuhealth/etc/trytond.conf -d "$DB_NAME" --email "$ADMIN_MAIL" --all -p
 expect -exact "\"admin\" password for \"$DB_NAME\":"
 send -- "$ADMIN_PW\r"
 expect -exact "\"admin\" password confirmation:"
